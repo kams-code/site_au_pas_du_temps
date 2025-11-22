@@ -1,0 +1,209 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Au pas du temps - Boutique de Robes de Mariées</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <!-- En-tête -->
+    <header>
+        <h1>Au Pas du Temps</h1>
+        <p>La robe de vos rêves vous attend</p>
+    </header>
+
+    <!-- Barre d'information panier -->
+    <div class="panier-info">
+        🛒 Panier : <span id="panier-count">0</span> article(s)
+    </div>
+
+    <!-- Menu de navigation -->
+    <nav>
+        <ul>
+            <li><a href="#accueil">Accueil</a></li>
+            <li><a href="#robes">Nos Robes</a></li>
+            <li><a href="#panier">Mon Panier</a></li>
+            <li><a href="#contact">Contact</a></li>
+        </ul>
+    </nav>
+
+    <!-- Contenu principal -->
+    <main>
+        <!-- Section Accueil -->
+        <section id="accueil">
+            <h2>Bienvenue dans notre univers</h2>
+            <p class="intro">Découvrez notre collection exclusive de robes de mariées. 
+            Chaque robe est sélectionnée avec soin pour faire de votre jour le plus beau de votre vie.</p>
+        </section>
+
+        <!-- Section Robes -->
+        <section id="robes">
+            <h2>Notre Collection</h2>
+            <div class="robes-grid">
+                <!-- Robe 1 -->
+                <div class="robe-card">
+                    <div class="robe-image"><img src="img\Sima Brew - Ghana 🇬🇭.jpeg" alt=""></div>
+                    <h3>Robe Princesse</h3>
+                    <p class="prix">1200€</p>
+                    <p class="description">Magnifique robe style princesse avec dentelle délicate et traîne majestueuse. Parfaite pour un mariage de conte de fées.</p>
+                    <button class="btn-ajouter" onclick="ajouterAuPanier('Robe Princesse', 1200)">
+                        Ajouter au panier
+                    </button>
+                </div>
+
+                <!-- Robe 2 -->
+                <div class="robe-card">
+                    <div class="robe-image"><img src="img\Nanice Weddings (IG) - Ghana.jpg" alt=""></div>
+                    <h3>Robe Sirène</h3>
+                    <p class="prix">1500€</p>
+                    <p class="description">Robe élégante et ajustée, style sirène. Parfaite pour mettre en valeur votre silhouette avec sophistication.</p>
+                    <button class="btn-ajouter" onclick="ajouterAuPanier('Robe Sirène', 1500)">
+                        Ajouter au panier
+                    </button>
+                </div>
+
+                <!-- Robe 3 -->
+                <div class="robe-card">
+                    <div class="robe-image"><img src="img\téléchargement_renom.jpg" alt=""></div>
+                    <h3>Robe Bohème</h3>
+                    <p class="prix">900€</p>
+                    <p class="description">Robe légère et romantique, style bohème. Idéale pour un mariage champêtre en plein air.</p>
+                    <button class="btn-ajouter" onclick="ajouterAuPanier('Robe Bohème', 900)">
+                        Ajouter au panier
+                    </button>
+                </div>
+
+                <!-- Robe 4 -->
+                <div class="robe-card">
+                    <div class="robe-image"><img src="img\téléchargement.jpg " alt=""></div>
+                    <h3>Robe Vintage</h3>
+                    <p class="prix">1100€</p>
+                    <p class="description">Robe au charme rétro avec broderies raffinées. Un style intemporel inspiré des années 50.</p>
+                    <button class="btn-ajouter" onclick="ajouterAuPanier('Robe Vintage', 1100)">
+                        Ajouter au panier
+                    </button>
+                </div>
+
+                <!-- Robe 5 -->
+                <div class="robe-card">
+                    <div class="robe-image"><img src="img\téléchargement (2).jpg" alt=""></div>
+                    <h3>Robe Moderne</h3>
+                    <p class="prix">1350€</p>
+                    <p class="description">Design contemporain et minimaliste. Pour une mariée moderne qui aime l'élégance épurée.</p>
+                    <button class="btn-ajouter" onclick="ajouterAuPanier('Robe Moderne', 1350)">
+                        Ajouter au panier
+                    </button>
+                </div>
+
+                <!-- Robe 6 -->
+                <div class="robe-card">
+                    <div class="robe-image"><img src="img\téléchargement (1).jpg" alt=""></div>
+                    <h3>Robe Romantique</h3>
+                    <p class="prix">1250€</p>
+                    <p class="description">Dentelle florale et tulle aérien. Un look féerique et romantique pour les rêveuses.</p>
+                    <button class="btn-ajouter" onclick="ajouterAuPanier('Robe Romantique', 1250)">
+                        Ajouter au panier
+                    </button>
+                </div>
+            </div>
+        </section>
+
+        <!-- Section Panier -->
+        <section id="panier">
+            <h2>Mon Panier</h2>
+            <div id="contenu-panier">
+                <p class="panier-vide">Votre panier est vide</p>
+            </div>
+            <div id="total-panier" class="total" style="display: none;"></div>
+            <button id="btn-commander" class="btn-commander" onclick="afficherFormulaire()" style="display: none;">
+                Passer la commande
+            </button>
+        </section>
+
+        <!-- Section Commande -->
+        <section id="commande" style="display: none;">
+            <h2>Finaliser votre commande</h2>
+            <div class="formulaire">
+                <div id="message-confirmation" class="message-confirmation"></div>
+                <form id="formulaire-commande">
+                    <div class="form-group">
+                        <label for="nom">Nom complet *</label>
+                        <input type="text" id="nom" required placeholder="Votre nom complet">
+                    </div>
+                    <div class="form-group">
+                        <label for="email">Email *</label>
+                        <input type="email" id="email" required placeholder="votre.email@exemple.fr">
+                    </div>
+                    <div class="form-group">
+                        <label for="telephone">Téléphone *</label>
+                        <input type="tel" id="telephone" required placeholder="06 12 34 56 78">
+                    </div>
+                    <div class="form-group">
+                        <label for="adresse">Adresse de livraison *</label>
+                        <textarea id="adresse" required placeholder="Votre adresse complète"></textarea>
+                    </div>
+                    <div class="form-group">
+                        <label for="date-mariage">Date du mariage</label>
+                        <input type="date" id="date-mariage">
+                    </div>
+                    <div class="form-group">
+                        <label for="commentaire">Commentaire / Instructions spéciales</label>
+                        <textarea id="commentaire" placeholder="Des demandes particulières ?"></textarea>
+                    </div>
+                    <button type="submit" class="btn-soumettre">Confirmer la commande</button>
+                </form>
+            </div>
+        </section>
+
+        <!-- Section Contact -->
+        <section id="contact">
+            <h2>Contactez-nous</h2>
+            <div class="contact-container">
+                <div class="contact-info">
+                    <h3>Nos coordonnées</h3>
+                    <p>📧 <strong>Email :</strong> kamtadaina24@gmail.com</p>
+                    <p>📞 <strong>Téléphone :</strong> 06 58 25 59 70</p>
+                    <p>📍 <strong>Adresse :</strong>boutique 422, marché central de Douala</p>
+                    <p>🕒 <strong>Horaires :</strong></p>
+                    <p style="margin-left: 2rem;">Du lundi au samedi : 8h - 18h</p>
+                    <p style="margin-left: 2rem;">Dimanche : Sur rendez-vous uniquement</p>
+                </div>
+
+                <div class="contact-form">
+                    <h3>Envoyez-nous un message</h3>
+                    <form id="formulaire-contact">
+                        <div class="form-group">
+                            <label for="contact-nom">Nom *</label>
+                            <input type="text" id="contact-nom" required placeholder="Votre nom">
+                        </div>
+                        <div class="form-group">
+                            <label for="contact-email">Email *</label>
+                            <input type="email" id="contact-email" required placeholder="votre.email@exemple.fr">
+                        </div>
+                        <div class="form-group">
+                            <label for="contact-sujet">Sujet *</label>
+                            <input type="text" id="contact-sujet" required placeholder="Objet de votre message">
+                        </div>
+                        <div class="form-group">
+                            <label for="contact-message">Message *</label>
+                            <textarea id="contact-message" required placeholder="Votre message..." rows="5"></textarea>
+                        </div>
+                        <button type="submit" class="btn-soumettre">Envoyer</button>
+                    </form>
+                    <div id="message-contact" class="message-confirmation" style="display: none;"></div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Pied de page -->
+    <footer>
+        <p>&copy; 2025 Au Pas du Temps - Tous droits réservés</p>
+        <p>Réalisé avec 💕 pour les futures mariées</p>
+    </footer>
+
+    <!-- Lien vers le fichier JavaScript -->
+    <script src="script.js"></script>
+</body>
+</html>
